@@ -17,7 +17,7 @@ module.exports = (app) => {
             title: req.body.title,
             text: req.body.text,
 
-            id: uniqid();
+            id: uniqid(),
         };
 
         db.push(userNote);
