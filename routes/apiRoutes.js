@@ -1,10 +1,11 @@
 const path = require('path');
-const fs = require('uniqid');
+const fs = require('fs')
 
-var uniqid = require('uniquid');
+var uniqid = require('uniqid');
 
 module.exports = (app) => {
-    app.get('/api/notes', (req,res) => {
+
+    app.get('/api/notes', (req, res) => {
         res.sendFile(path.join(__dirname, '../db/db.json'));
     });
 
@@ -26,7 +27,7 @@ module.exports = (app) => {
 
     });
 
-    app.delete('/api/notes/:id', (req, res) =>{
+    app.delete('/api/notes/:id', (req, res) => {
 
         let db = JSON.parse(fs.readFileSync('db,db.json'))
 
@@ -35,6 +36,4 @@ module.exports = (app) => {
         fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
         res.json(deleteNotes);
     })
-
-
 };
